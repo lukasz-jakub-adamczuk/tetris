@@ -8,7 +8,7 @@
 
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
-// var modifier = 1;
+var modifier = 1;
 
 // assets
 var bgReady = false;
@@ -56,7 +56,7 @@ var reset = function() {
 
 
 // update game objects
-var update = function(modifier) {
+var update = function() {
   // up
   if (38 in keys) {
     brick.y -= brick.speed * modifier;

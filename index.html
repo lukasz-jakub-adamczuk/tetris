@@ -4,13 +4,15 @@
     <title>Tetris</title>
     <style>
         * { padding: 0; margin: 0; }
-        canvas { background: #eee; display: block; margin: 0 auto; }
+        canvas { border: 1px solid #eee; display: block; margin: 0 auto; background: url(assets/bg.png) 0 0 repeat; }
     </style>
 </head>
 <body>
-    <h1>Tetris</h1>
-    <canvas id="myCanvas" width="160" height="320"></canvas>
+    <canvas></canvas>
 
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/class.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/require.js" data-main="js/src/main.js"></script>
 </body>
 </html>
