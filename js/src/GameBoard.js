@@ -6,6 +6,9 @@ define(function() {
 
     init: function() {
       this.bg = content.get('bg');
+      this.blocks = {
+        blue: content.get('block-blue')
+      }
 
       // TODO font numbers
     },
@@ -23,6 +26,18 @@ define(function() {
       ctx.textBaseline = "top";
       ctx.fillText("SCORE: " + bricks.TOTAL, 32, 32);
 
+    },
+
+    drawBlock: function(ctx, block, x, y) {
+      // how it's working
+      // var id = block.id, 
+      var id = block.ID,
+        size = 16;
+
+      x = 160 + x * size;
+      y = 0 + y * size;
+
+      ctx.drawImage(this.blocks.blue, 0, 0, size, size, x, y, size, size);
     }
   });
 

@@ -18,6 +18,8 @@ require(['src/Game', 'src/Tetris'], function(Game, Tetris) {
 
       content.load('bg', 'assets/background.png');
       content.load('brick', 'assets/O_1-2-3-4.png');
+
+      content.load('block-blue', 'assets/block_blue.png');
  
       input.bindKey('space', input.Keys.SPACE);
       input.bindKey('left', [input.Keys.LEFT_ARROW, input.Keys.A]);
@@ -37,7 +39,7 @@ require(['src/Game', 'src/Tetris'], function(Game, Tetris) {
         this.hasLoad = content.progress() === 1;
 
         if (this.hasLoad) {
-          this.tetris = new Tetris();
+          this.tetris = new Tetris(10, 20);
         }
       }
     }
