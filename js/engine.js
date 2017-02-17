@@ -104,4 +104,134 @@ var canvas, content, input;
       return c;
   })();
 
+  input = (function() {
+
+    var i = {},
+
+      _bindings = {},
+      _pressed = {},
+      _down = {},
+      _released = [],
+
+      mouse = { x: 0, y: 0 };
+
+    var Buttons = {
+      LEFT: -1,
+      CENTER: -2,
+      RIGHT: -3
+    }
+
+    var Keys = {
+      SPACE: 32,
+      LEFT_ARROW: 37,
+      UP_ARROW: 38,
+      RIGHT_ARROW: 39,
+      DOWN_ARROW: 40
+    }
+
+    for (var ch = 65; ch <= 90; ch++) {
+      Keys[String.fromCharCode(ch)] = ch;
+    }
+
+    i.mouse = mouse;
+    i.Buttons = Buttons;
+    i.Keys = Keys;
+
+    i.bindKey = function(action, keys) {
+      if (typeof keys === 'number') {
+        _bindings[keys] = action;
+        return;
+      }
+      for (var i = 0; i < keys.length; i++) {
+        _bindings[keys[i]] = action;
+      }
+    }
+
+    function _getCode(e) {
+      var t = e.type;
+      if (t === 'keydown' || t === 'keyup') {
+        return e.keyCode;
+      }
+      // add mouse support
+
+    }
+
+    function ondown(e) {
+      var action = _bindings[_getCode(e)];
+      if (!action) {
+        return;
+      } else {
+        _pressed[action] = !_down[action];
+        _down[action] = true;
+        e.preventDefault();
+      }
+    }
+
+    function onup(e) {
+      var action = _bindings[_getCode(e)];
+      if (!action) {
+        return;
+      } else {
+        _released.push(action);
+        e.preventDefault();
+      }
+    }
+
+    // enable right click on game
+    function oncontext(e) {
+      if (_bindings[Buttons.RIGHT]) {
+        e.preventDefault();
+      }
+    }
+
+    // TODO onmove for mouse
+    function onmove(e) {
+      var el = e.target,
+        ox = 0,
+        oy = 0;
+      
+      do {
+        ox += el.offsetLeft;
+        oy += el.offsetTop;
+      } while (el = el.parentOffset);
+
+      mouse.x = e.clientX - ox;
+      mouse.y = e.clientY - oy;
+
+      e.preventDefault();
+    }
+
+    i.clearPressed = function() {
+      for (var i = 0; i < _released.length; i++) {
+        _down[_released[i]] = false;
+      }
+      _pressed = {};
+      _released = [];
+    }
+
+    i.pressed = function(action) {
+      return _pressed[action];
+    }
+
+    i.down = function(action) {
+      return _down[action];
+    }
+
+    i.released = function(action) {
+      return _released.indexOf(action) >= 0;
+    }
+
+    canvas.frame.onmousedown = ondown;
+    canvas.frame.onmouseup = onup;
+    canvas.frame.onmousemove = onmove;
+    canvas.frame.oncontextmenu = oncontext;
+
+    document.onkeydown = ondown;
+    document.onkeyup = onup;
+    document.onmouseup = onup;
+
+    return i;
+
+  })();
+
 })();
