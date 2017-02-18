@@ -16,11 +16,11 @@ define(function() {
   var Block = Class.extend({
 
     init: function(id) {
-      this.setType(id || 'none');
+      this.setType(id || "none");
     },
 
-    setType: function() {
-      this.ID = typeof id === 'number' ? id : DrawIDs[id.toUpperCase()];
+    setType: function(id) {
+      this.ID = typeof id === "number" ? id : DrawIDs[id.toUpperCase()];
       this.solid = this.ID !== DrawIDs.NONE;
     }
   });
