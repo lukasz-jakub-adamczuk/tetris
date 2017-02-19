@@ -3,18 +3,18 @@
 define(function() {
 
   var ShapeDefinition = {
-    L: "001 111 000",
-    I: "0000 1111 0000 0000",
-    T: "010 111 000",
-    S: "011 110 000",
-    Z: "110 011 000",
-    O: "011 011 000",
-    J: "100 111 000"
+    L: '001 111 000',
+    I: '0000 1111 0000 0000',
+    T: '010 111 000',
+    S: '011 110 000',
+    Z: '110 011 000',
+    O: '011 011 000',
+    J: '100 111 000'
   };
 
   var IDs = [];
   for (var sd in ShapeDefinition) {
-    ShapeDefinition[sd] = ShapeDefinition[sd].replace(/\s+/g, "");
+    ShapeDefinition[sd] = ShapeDefinition[sd].replace(/\s+/g, '');
     IDs.push(sd);
   }
 
@@ -42,7 +42,7 @@ define(function() {
       this._shapes.push(s);
 
       var r = 3, t;
-      while (this.ID !== "O" && r-- !== 0) {
+      while (this.ID !== 'O' && r-- !== 0) {
         t = [];
         for (var i = 0; i < n; i++) {
           t[i] = [];
@@ -106,16 +106,16 @@ define(function() {
     },
 
     toString: function() {
-      var str = "";
+      var str = '';
 
       for (var i = 0; i < this._shapes.length; i++) {
-        str += "\n";
+        str += '\n';
         var s = this._shapes[i];
         for (var j = 0; j < s.length; j++) {
           for (var k = 0; k < s[j].length; k++) {
-            str += s[j][k] ? "#" : ".";
+            str += s[j][k] ? '#' : '.';
           }
-          str += "\n";
+          str += '\n';
         }
       }
 

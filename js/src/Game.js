@@ -2,20 +2,20 @@
 
 define(function() {
 
-  var _vendors = ['o', 'ms', 'moz', 'webkit'];
+  var _vendors = ["o", "ms", "moz", "webkit"];
 
   for (var i = _vendors.length; i-- && !window.requestAnimationFrame;) {
     var v = _vendors[i];
 
-    window.requestAnimationFrame = window[v + 'RequestAnimationFrame'];
-    window.cancelAnimationFrame = window[v + 'CancelAnimationFrame'] ||
-                                  window[v + 'CancelRequestAnimationFrame'];
+    window.requestAnimationFrame = window[v + "RequestAnimationFrame"];
+    window.cancelAnimationFrame = window[v + "CancelAnimationFrame"] ||
+                                  window[v + "CancelRequestAnimationFrame"];
   }
 
   var Game = Class.extend({
 
     tick: function() {
-      console.warn('should be overriden...');
+      console.warn("should be overriden...");
     },
 
     stop: function() {

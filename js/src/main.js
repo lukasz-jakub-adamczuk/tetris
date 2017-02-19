@@ -16,10 +16,23 @@ require(['src/Game', 'src/Tetris'], function(Game, Tetris) {
       canvas.height = 320;
       canvas.scale = 1;
 
-      content.load('bg', 'assets/background.png');
-      content.load('brick', 'assets/O_1-2-3-4.png');
-
+      content.load('background', 'assets/background.png');
+      
       content.load('block-blue', 'assets/block_blue.png');
+      content.load('block-cyan', 'assets/block_cyan.png');
+      content.load('block-green', 'assets/block_green.png');
+      content.load('block-orange', 'assets/block_orange.png');
+      content.load('block-purple', 'assets/block_purple.png');
+      content.load('block-red', 'assets/block_red.png');
+      content.load('block-yellow', 'assets/block_yellow.png');
+      
+      content.load('L', 'assets/L_1.png');
+      content.load('J', 'assets/J_1.png');
+      content.load('T', 'assets/T_1.png');
+      content.load('I', 'assets/I_1-3.png');
+      content.load('S', 'assets/S_1-3.png');
+      content.load('Z', 'assets/Z_1-3.png');
+      content.load('O', 'assets/O_1-2-3-4.png');
  
       input.bindKey('space', input.Keys.SPACE);
       input.bindKey('left', [input.Keys.LEFT_ARROW, input.Keys.A]);
